@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Merriweather";
+  src: url("assets/fonts/Merriweather.ttf");
+}
+
+@font-face {
+  font-family: "Brig";
+  src: url("assets/fonts/Brig.ttf");
+}
+
+@font-face {
+  font-family: "Baskerville";
+  src: url("assets/fonts/Baskerville.ttc");
+}
+
+html,
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +21,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: url(assets/images/background.jpg) 0 / cover fixed;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }
 
 code {
