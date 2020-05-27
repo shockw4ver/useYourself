@@ -16,6 +16,7 @@ const Main = styled.main`
 const Content = styled.div`
   flex-grow: ${ContentTheme.flexGrow};
   height: ${ContentTheme.height};
+  width: ${ContentTheme.width};
 `
 
 export default observer(Layout)

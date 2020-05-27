@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../../components/animations'
 
 export const Wrapper = styled.div`
   position: relative;
@@ -22,6 +23,8 @@ export const Title = styled.h1`
   font-weight: bold;
   font-family: "Brig";
   text-align: right;
+
+  ${fadeIn({ duration: 2000 })}
 `
 
 export const Message = styled.p`

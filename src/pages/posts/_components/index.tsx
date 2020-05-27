@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import ReactLoading from 'react-loading'
 import { BlurRoot } from '../../../components/BlurRoot'
+import { fadeIn } from '../../../components/animations'
+
+export * from './PostList'
+export * from './PostListItem'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -16,21 +20,10 @@ export const PostPortal = styled.div`
   height: 95%;
   width: 95%;
   overflow: hidden;
-  animation: fadeIn 300ms;
 
   ${BlurRoot}
 
-  @keyframes fadeIn {
-    from {
-      transform: translate(0, -15px);
-      opacity: 0;
-    }
-
-    to {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
+  ${fadeIn()}
 `
 
 export const Loading = styled(ReactLoading)`
@@ -44,7 +37,7 @@ export const Loading = styled(ReactLoading)`
 `
 
 interface IPostPageRootProps {
-  children: React.ReactElement
+  children: React.ReactNode
 }
 
 export function PostPageRoot({ children }: IPostPageRootProps) {

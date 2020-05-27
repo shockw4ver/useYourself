@@ -13,6 +13,21 @@
   src: url("assets/fonts/Baskerville.ttc");
 }
 
+@font-face {
+  font-family: "Lora";
+  src: url("assets/fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Fangzheng NShuSong";
+  src: url("assets/fonts/FZXSSJW.TTF");
+}
+
+@font-face {
+  font-family: "Fangzheng BaoSong";
+  src: url("assets/fonts/FZBSJW.TTF");
+}
+
 html,
 body {
   margin: 0;
