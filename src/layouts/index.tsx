@@ -1,22 +1,16 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import styled, { ThemeProvider } from 'styled-components'
-import { useStores } from '../models'
+import { useStores } from '@/models'
 import Navbar from './Navbar'
+import Content from './Content'
 import * as MainTheme from './themes/Main'
-import * as ContentTheme from './themes/Content'
 
 const Main = styled.main`
   position: relative;
   display: ${MainTheme.display};
   height: 100%;
   width: 100%;
-`
-
-const Content = styled.div`
-  flex-grow: ${ContentTheme.flexGrow};
-  height: ${ContentTheme.height};
-  width: ${ContentTheme.width};
 `
 
 export default observer(Layout)
@@ -28,13 +22,28 @@ export interface ILayout {
 function Layout({ children }: ILayout) {
   const { theme } = useStores()
 
+  function handleCloseNavbar() {
+    theme.toggleNavbar(false)
+  }
+
+  function handleOpenNavbar() {
+    theme.toggleNavbar(true)
+  }
+
   return (
     <ThemeProvider theme={{
       mode: theme.layout
     }}>
       <Main>
-        <Navbar />
-        <Content>
+        <Navbar
+          mode={theme.layout}
+          collapsed={!theme.navbarVisible}
+          onClose={handleCloseNavbar}
+        />
+        <Content
+          callNavOutVisible={!theme.navbarVisible}
+          onCallNavOut={handleOpenNavbar}
+        >
           { children }
         </Content>
       </Main>

@@ -1,7 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import { lineClamp } from '../../../components/LineClamp'
+import styled, { css } from 'styled-components'
+import { lineClamp } from '@/components/LineClamp'
+import { fadeIn } from '@/components/animations'
 
+interface IPostListItemWrapperProps {
+  contentMode: boolean
+}
 export const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
@@ -12,11 +16,31 @@ export const Wrapper = styled.li`
   background-color: rgba(255,255,255,.2);
   transition: all 300ms;
   transform-origin: center;
+
+  ${(props: IPostListItemWrapperProps) => props.contentMode ? css`
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: auto;
+    height: 95%;
+    width: 95%;
+    overflow: auto;
+    background-color: rgba(35, 36, 32, .6);
+
+    &::-webkit-scrollbar {
+      visibility: hidden;
+    }
+
+    ${fadeIn()}
+  ` : css`
+    &:hover {
+      box-shadow: 0 0 20px 1px rgba(255,255,255,.1);
+      transform: scale(1.02, 1.02);
+    }
+  `}
   
-  &:hover {
-    box-shadow: 0 0 20px 1px rgba(255,255,255,.1);
-    transform: scale(1.02, 1.02);
-  }
 `
 
 export const PostTitle = styled.h1`
@@ -52,12 +76,18 @@ export const PostSummary = styled.p`
 `
 
 interface IPostListItemProps {
-  children: React.ReactNode
+  children: React.ReactNode,
+  contentMode: boolean,
+  onClick: React.EventHandler<any>
 }
 
-export function PostListItem({ children }: IPostListItemProps) {
+export function PostListItem({
+  children,
+  contentMode,
+  onClick
+}: IPostListItemProps) {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick} contentMode={contentMode}>
       { children }
     </Wrapper>
   )

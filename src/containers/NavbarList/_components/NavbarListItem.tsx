@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import theme from 'styled-theming'
-import { LayoutModes } from '../../../models/theme'
+import { LayoutModes } from '@/models/theme'
 
 interface INavbarListItemRootProps {
   active: boolean | undefined,

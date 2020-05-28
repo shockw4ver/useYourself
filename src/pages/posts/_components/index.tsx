@@ -6,6 +6,7 @@ import { fadeIn } from '../../../components/animations'
 
 export * from './PostList'
 export * from './PostListItem'
+export * from './PostContent'
 
 export const Wrapper = styled.div`
   display: flex;

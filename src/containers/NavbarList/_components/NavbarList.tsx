@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from 'styled-theming'
-import { LayoutModes } from '../../../models/theme'
+import { LayoutModes } from '@/models/theme'
 
 const flexDirection = theme('mode', {
   [LayoutModes.House]: 'row',

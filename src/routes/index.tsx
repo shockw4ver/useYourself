@@ -15,7 +15,9 @@ import PostsPage from '../pages/posts'
 const history = createBrowserHistory()
 
 export interface IRoute {
-  path: string
+  name: string
+  path: string | string[]
+  link: string
   exact?: boolean
   render(): React.ReactElement
   meta: {
@@ -26,7 +28,9 @@ export interface IRoute {
 
 export const routes: IRoute[] = [
   {
+    name: 'home',
     path: '/',
+    link: '/',
     exact: true,
     render() {
       return (<HomePage />)
@@ -37,7 +41,9 @@ export const routes: IRoute[] = [
     }
   },
   {
-    path: '/posts',
+    name: 'posts',
+    path: ['/posts', '/posts/:id'],
+    link: '/posts',
     render() {
       return (<PostsPage />)
     },
@@ -47,7 +53,9 @@ export const routes: IRoute[] = [
     }
   },
   {
+    name: 'about',
     path: '/about',
+    link: '/about',
     render() {
       return (<AboutPage />)
     },
@@ -64,7 +72,7 @@ export function AppRoutes() {
       <Layout>
         <Switch>
           {routes.map(item => (
-            <Route key={item.path} exact={item.exact} path={item.path}>
+            <Route key={item.name} exact={item.exact} path={item.path}>
               { item.render() }
             </Route>
           ))}

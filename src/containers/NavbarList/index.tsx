@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
-import { routes } from '../../routes'
+import { routes } from '@/routes'
 import {
   NavbarList,
   NavbarListItem
@@ -20,9 +20,9 @@ function NavbarListContainer() {
     <NavbarList>
       {routes.map(item => (
         <NavbarListItem
-          key={item.path}
-          active={location.pathname === item.path}
-          onClick={() => handleNavbarListItemClick(item.path)}
+          key={item.name}
+          active={location.pathname === item.link}
+          onClick={() => handleNavbarListItemClick(item.link)}
         >
           { item.meta.label }
         </NavbarListItem>
