@@ -1,9 +1,17 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import IconFullscreen from '@/assets/icons/fullscreen.svg'
 
 const Wrapper = styled.div`
   position: relative;
+
+  &:-webkit-full-screen {
+    background-color: #222;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
 `
 
 const MarkdownViewer = styled.div.attrs({
@@ -33,16 +41,29 @@ export function PostContent({
   const el = useRef<HTMLDivElement>(null)
 
   function handleFullscreen() {
-    if (el.current) {
+    if (!el.current)
+      return
+    
+    if (!isFullscreen) {
       el.current.requestFullscreen()
+    } else {
+      document.exitFullscreen()
     }
   }
+
+  useLayoutEffect(() => {
+    el.current?.addEventListener('fullscreenchange', () => {
+      setFullscreenStatus(document.fullscreen)
+    })
+  }, [])
 
   return (
     <Wrapper ref={el}>
       <FullscreenTrigger onClick={handleFullscreen} />
 
-      <MarkdownViewer dangerouslySetInnerHTML={{__html: children}} />
+      <div>
+        <MarkdownViewer dangerouslySetInnerHTML={{__html: children}} />
+      </div>
     </Wrapper>
   )
 }

@@ -1,3 +1,6 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300);
+
 .markdown-viewer {
   color: #dfdfdf;
   // @media print {
@@ -479,6 +482,12 @@
     font-weight: inherit;
     line-height: 1.42;
   }
+
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+  }
   
   h1,
   .air-h1 {
@@ -528,8 +537,6 @@
     max-width: 100%;
   }
   
-  @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300);
-  
   body {
     color: #444;
     font-family: 'Open Sans', Helvetica, sans-serif;
@@ -540,10 +547,8 @@
   }
   
   img {
-    border-radius: 50%;
-    height: 200px;
+    display: block;
     margin: 0 auto;
-    width: 200px;
   }
   
   a,
@@ -582,9 +587,24 @@
   }
 
   /* rewrite */
+  * {
+    font-family: "Fangzheng NShuSong";
+    line-height: 1.5em;
+  }
+
   pre {
     background-color: rgba(35, 36, 32, .6);
     border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  pre,
+  code {
+    font-family: Menlo, Monaco, "Courier New", monospace;
+
+    span {
+      font-family: inherit;
+    }
   }
 
   p {
@@ -596,5 +616,13 @@
   h2 {
     font-family: "Fangzheng NShuSong";
     font-weight: bold;
+  }
+
+  blockquote {
+    margin: 15px 0;
+  }
+
+  ul {
+    font-family: "Fangzheng NShuSong";
   }
 }

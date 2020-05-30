@@ -47,7 +47,7 @@ export class PostStore implements IPostStore {
 
     this.fetching = true
     
-    const res = await fetch('https://service-rzwlbsaq-1253264948.gz.apigw.tencentcs.com/release/posts')
+    const res = await fetch('https://service-18ucy3ba-1253581001.gz.apigw.tencentcs.com/release/posts')
     const { data }: IReponse<any[]> = await res.json() as any
     
     this.posts = data.map(item => {

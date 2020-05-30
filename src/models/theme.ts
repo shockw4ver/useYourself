@@ -23,7 +23,7 @@ export interface IThemeStore {
 export class ThemeStore implements IThemeStore {
   @observable mode = ThemeModes.Light
   @observable layout = LayoutModes.Recipe
-  @observable navbarVisible = true
+  @observable navbarVisible = this.isMobile() ? false : true
 
   @action
   toggleNavbar(visible?: boolean) {
@@ -31,6 +31,21 @@ export class ThemeStore implements IThemeStore {
       this.navbarVisible = !this.navbarVisible
     } else {
       this.navbarVisible = visible
+    }
+  }
+
+  private isMobile() {
+    if( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ) {
+      return true
+    } else {
+      return false
     }
   }
 }
