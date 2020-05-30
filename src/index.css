@@ -42,7 +42,7 @@ body {
 }
 
 body {
-  background: url(assets/images/background.jpg) 0 / cover fixed;
+  background: url("http://qb5hdauc2.bkt.clouddn.com/background.jpg") 0 / cover fixed;
 }
 
 #root {

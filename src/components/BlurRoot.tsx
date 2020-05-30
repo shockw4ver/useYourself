@@ -1,5 +1,4 @@
 import { css } from 'styled-components'
-import ImageBackground from '../assets/images/background.jpg'
 
 export const BlurRoot = css`
   &::before {
@@ -12,6 +11,6 @@ export const BlurRoot = css`
     filter: blur(20px);
     z-index: -1;
     margin: -10px;
-    background: url(${ImageBackground}) 0 / cover fixed;
+    background: url("http://qb5hdauc2.bkt.clouddn.com/background.jpg") 0 / cover fixed;
   }
 `
