@@ -11,6 +11,7 @@ export interface IPostStore {
 }
 
 export interface IPost {
+  id: number,
   title: string
   summary: string
   createDate: number
@@ -20,9 +21,8 @@ export interface IPost {
 }
 
 export class PostStore implements IPostStore {
-  md: MarkdownIt = new MarkdownIt({
+  md: MarkdownIt = new MarkdownIt('commonmark', {
     highlight: (str, lang) => {
-      console.log(lang, hljs.getLanguage(lang))
       if (lang && hljs.getLanguage(lang)) {
         try {
           return `<pre class="hljs"><code>${hljs.highlight(lang, str, true).value}</code></pre>`
@@ -50,11 +50,12 @@ export class PostStore implements IPostStore {
     const res = await fetch('https://service-18ucy3ba-1253581001.gz.apigw.tencentcs.com/release/posts')
     const { data }: IReponse<any[]> = await res.json() as any
     
-    this.posts = data.map(item => {
+    this.posts = data.map((item, index) => {
       const attrs = item.attributes
       const body = item.body
 
       return {
+        id: index,
         title: attrs.title,
         summary: attrs.description,
         createDate: new Date().getTime(),

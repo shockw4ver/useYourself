@@ -624,5 +624,12 @@
 
   ul {
     font-family: "Fangzheng NShuSong";
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 1.5em;
+
+    ul {
+      list-style-type: circle;
+    }
   }
 }

@@ -55,7 +55,6 @@ function PostsPage() {
     (index !== Number(params?.id) && history.push(`/posts/${index}`))
   }
 
-  console.log(params)
   return (
     <PostPageRoot>
       {post.fetching ? (
@@ -63,7 +62,8 @@ function PostsPage() {
       ) : (
         <PostList>
           {list.map((item, index) => {
-            const isContentMode = index === Number(params.id)
+            console.log(index, Number(params.id))
+            const isContentMode = item.id === Number(params.id)
             return (
               <PostListItem
                 key={item.title}

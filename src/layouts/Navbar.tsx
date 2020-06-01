@@ -20,6 +20,7 @@ interface IWrapperProps {
 }
 const Wrapper = styled.div`
   position: relative;
+  z-index: 99;
   height: ${height};
   width: ${(props: IWrapperProps) => props.collapsed ? 0 : width};
   background-color: rgba(0,0,0,.2);
